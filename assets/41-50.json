@@ -1,0 +1,82 @@
+[
+  {
+    "id": 41,
+    "english": "The students couldn't help laughing when they heard the joke.",
+    "chinese": "",
+    "startTime": 2,
+    "endTime": 10,
+    "audioFile": "41-50.mp3"
+  },
+  {
+    "id": 42,
+    "english": "We were tired, so we stayed at home.",
+    "chinese": "",
+    "startTime": 10,
+    "endTime": 18,
+    "audioFile": "41-50.mp3"
+  },
+  {
+    "id": 43,
+    "english": "I was very curious about how he spent his money.",
+    "chinese": "",
+    "startTime": 18,
+    "endTime": 26,
+    "audioFile": "41-50.mp3"
+  },
+  {
+    "id": 44,
+    "english": "Tom was in a blue mood because he lost the race",
+    "chinese": "",
+    "startTime": 26,
+    "endTime": 35,
+    "audioFile": "41-50.mp3"
+  },
+  {
+    "id": 45,
+    "english": "We are going to invite my uncle, aunt and cousins for dinner",
+    "chinese": "",
+    "startTime": 35,
+    "endTime": 45,
+    "audioFile": "41-50.mp3"
+  },
+  {
+    "id": 46,
+    "english": "Thanks for your invitation to have dinner, but I can't come",
+    "chinese": "",
+    "startTime": 45,
+    "endTime": 55,
+    "audioFile": "41-50.mp3"
+  },
+  {
+    "id": 47,
+    "english": "I'm sorry to hear that",
+    "chinese": "",
+    "startTime": 55,
+    "endTime": 60,
+    "audioFile": "41-50.mp3"
+  },
+  {
+    "id": 48,
+    "english": "On each shelf, the books are lined up in order from smallest to largest",
+    "chinese": "",
+    "startTime": 60,
+    "endTime": 71,
+    "audioFile": "41-50.mp3"
+  },
+  {
+    "id": 49,
+    "english": "When we arrived at Ted's house, his dog, Guinness, welcomed us",
+    "chinese": "",
+    "startTime": 71,
+    "endTime": 82,
+    "audioFile": "41-50.mp3"
+  },
+  {
+    "id": 50,
+    "english": "Jack, a close friend of mine, will come and join us in the game.",
+    "chinese": "",
+    "startTime": 82,
+    "endTime": 92,
+    "audioFile": "41-50.mp3"
+  }
+]

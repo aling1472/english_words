@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "english": "It's time for us to have lunch.",
+    "chinese": "是我们吃午饭的时间了。",
+    "startTime": 0,
+    "endTime": 8
+  },
+  {
+    "id": 2,
+    "english": "She had an egg, a piece of bread and some milk for breakfast.",
+    "chinese": "她早餐吃了一个鸡蛋，一片面包和一些牛奶。",
+    "startTime": 8,
+    "endTime": 17
+  },
+  {
+    "id": 3,
+    "english": "Which fruit do you like, apples or oranges?",
+    "chinese": "你喜欢哪种水果，苹果还是橙子？",
+    "startTime": 17,
+    "endTime": 34
+  },
+  {
+    "id": 4,
+    "english": "The fish soup tasted so good that the guests asked for more.",
+    "chinese": "鱼汤味道好极了，客人们都要了第二份。",
+    "startTime": 34,
+    "endTime": 43
+  },
+  {
+    "id": 5,
+    "english": "She usually gets up at half past seven in the morning.",
+    "chinese": "她通常在早上七点半起床。",
+    "startTime": 43,
+    "endTime": 46
+  },
+  {
+    "id": 6,
+    "english": "My grandpa used to have a walk in the garden after supper.",
+    "chinese": "我爷爷过去常常在晚饭后在花园里散步。",
+    "startTime": 46,
+    "endTime": 54
+  },
+  {
+    "id": 7,
+    "english": "At weekends, some people like to stay at home, but others like to go for a walk or have a picnic.",
+    "chinese": "在周末，有些人喜欢待在家里，但其他人喜欢去散步或野餐。",
+    "startTime": 54,
+    "endTime": 74
+  },
+  {
+    "id": 8,
+    "english": "I called you yesterday evening, but there was no answer.",
+    "chinese": "我昨天晚上给你打电话了，但没有人接。",
+    "startTime": 74,
+    "endTime": 82
+  },
+  {
+    "id": 9,
+    "english": "On Saturday, I will help my mom with the housework.",
+    "chinese": "星期六，我将帮助妈妈做家务。",
+    "startTime": 82,
+    "endTime": 92
+  },
+  {
+    "id": 10,
+    "english": "The children are listening to the radio while they are cleaning the windows.",
+    "chinese": "孩子们在擦窗户的同时在听收音机。",
+    "startTime": 92,
+    "endTime": 102
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "id": 81,
+    "english": "The weather is very hot, so the ice turns into water.",
+    "chinese": "",
+    "startTime": 0,
+    "endTime": 12,
+    "audioFile": "81-90.mp3"
+  },
+  {
+    "id": 82,
+    "english": "The weather forecast says it will be rainy in the late afternoon.",
+    "chinese": "",
+    "startTime": 12,
+    "endTime": 21,
+    "audioFile": "81-90.mp3"
+  },
+  {
+    "id": 83,
+    "english": "People plant trees in spring and farmers are busy harvesting in autumn.",
+    "chinese": "",
+    "startTime": 21,
+    "endTime": 31,
+    "audioFile": "81-90.mp3"
+  },
+  {
+    "id": 84,
+    "english": "When spring comes, the animals that sleep in winter start waking up.",
+    "chinese": "",
+    "startTime": 31,
+    "endTime": 41,
+    "audioFile": "81-90.mp3"
+  },
+  {
+    "id": 85,
+    "english": "What a big elephant it is.",
+    "chinese": "",
+    "startTime": 41,
+    "endTime": 48,
+    "audioFile": "81-90.mp3"
+  },
+  {
+    "id": 86,
+    "english": "You can see as many as 15,000 butterflies sitting on one branch.",
+    "chinese": "",
+    "startTime": 48,
+    "endTime": 59,
+    "audioFile": "81-90.mp3"
+  },
+  {
+    "id": 87,
+    "english": "Joy keeps two pets at home and she feeds them after dinner every day.",
+    "chinese": "",
+    "startTime": 59,
+    "endTime": 70,
+    "audioFile": "81-90.mp3"
+  },
+  {
+    "id": 88,
+    "english": "It's your turn to walk the dog.",
+    "chinese": "",
+    "startTime": 70,
+    "endTime": 76,
+    "audioFile": "81-90.mp3"
+  },
+  {
+    "id": 89,
+    "english": "The girl wants to buy a flower for her mum.",
+    "chinese": "",
+    "startTime": 76,
+    "endTime": 93,
+    "audioFile": "81-90.mp3"
+  },
+  {
+    "id": 90,
+    "english": "now there are only about 10,000 blue whales in the wild",
+    "chinese": "",
+    "startTime": 93,
+    "endTime": 103,
+    "audioFile": "81-90.mp3"
+  }
+]

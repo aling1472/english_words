@@ -1,0 +1,82 @@
+[
+  {
+    "id": 91,
+    "english": "Most of the kids have never seen the sea.",
+    "chinese": "",
+    "startTime": 0,
+    "endTime": 10,
+    "audioFile": "91-100.mp3"
+  },
+  {
+    "id": 92,
+    "english": "The moon is round and bright on that day.",
+    "chinese": "",
+    "startTime": 10,
+    "endTime": 17,
+    "audioFile": "91-100.mp3"
+  },
+  {
+    "id": 93,
+    "english": "The moon goes around the earth all the time.",
+    "chinese": "",
+    "startTime": 17,
+    "endTime": 31,
+    "audioFile": "91-100.mp3"
+  },
+  {
+    "id": 94,
+    "english": "We shouldn't leave the rubbish anywhere.",
+    "chinese": "",
+    "startTime": 31,
+    "endTime": 43,
+    "audioFile": "91-100.mp3"
+  },
+  {
+    "id": 95,
+    "english": "We should not cut down too many trees because trees help keep the air clean.",
+    "chinese": "",
+    "startTime": 43,
+    "endTime": 54,
+    "audioFile": "91-100.mp3"
+  },
+  {
+    "id": 96,
+    "english": "We use plastic to make bags and bottles, but too much plastic is bad for the earth.",
+    "chinese": "",
+    "startTime": 54,
+    "endTime": 59,
+    "audioFile": "91-100.mp3"
+  },
+  {
+    "id": 97,
+    "english": "We should not drive so much because cars use a lot of energy.",
+    "chinese": "",
+    "startTime": 59,
+    "endTime": 68,
+    "audioFile": "91-100.mp3"
+  },
+  {
+    "id": 98,
+    "english": "Robots can cheer up sick kids too.",
+    "chinese": "",
+    "startTime": 68,
+    "endTime": 76,
+    "audioFile": "91-100.mp3"
+  },
+  {
+    "id": 99,
+    "english": "We're going to see a film about space travel.",
+    "chinese": "",
+    "startTime": 76,
+    "endTime": 84,
+    "audioFile": "91-100.mp3"
+  },
+  {
+    "id": 100,
+    "english": "They will travel to Mars in a time chair.",
+    "chinese": "",
+    "startTime": 84,
+    "endTime": 94,
+    "audioFile": "91-100.mp3"
+  }
+]

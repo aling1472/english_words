@@ -1,0 +1,82 @@
+[
+  {
+    "id": 71,
+    "english": "It takes us half an hour to walk to school every day.",
+    "chinese": "",
+    "startTime": 0,
+    "endTime": 11,
+    "audioFile": "71-80.mp3"
+  },
+  {
+    "id": 72,
+    "english": "The train from Tianjin Nan arrived an hour ago.",
+    "chinese": "",
+    "startTime": 11,
+    "endTime": 19,
+    "audioFile": "71-80.mp3"
+  },
+  {
+    "id": 73,
+    "english": "You can go down the street and then turn right at the first corner.",
+    "chinese": "",
+    "startTime": 19,
+    "endTime": 30,
+    "audioFile": "71-80.mp3"
+  },
+  {
+    "id": 74,
+    "english": "We mustn't talk or speak loudly in public places like hospitals, libraries or cinemas.",
+    "chinese": "",
+    "startTime": 30,
+    "endTime": 42,
+    "audioFile": "71-80.mp3"
+  },
+  {
+    "id": 75,
+    "english": "Hainan is in the south of China",
+    "chinese": "",
+    "startTime": 42,
+    "endTime": 47,
+    "audioFile": "71-80.mp3"
+  },
+  {
+    "id": 76,
+    "english": "The bookstore is next to the library",
+    "chinese": "",
+    "startTime": 47,
+    "endTime": 55,
+    "audioFile": "71-80.mp3"
+  },
+  {
+    "id": 77,
+    "english": "My grandma lives with my uncle in a village not too far away",
+    "chinese": "",
+    "startTime": 55,
+    "endTime": 74,
+    "audioFile": "71-80.mp3"
+  },
+  {
+    "id": 78,
+    "english": "Sitting for a long time at the computer is bad for our health.",
+    "chinese": "",
+    "startTime": 74,
+    "endTime": 84,
+    "audioFile": "71-80.mp3"
+  },
+  {
+    "id": 79,
+    "english": "People often need to take some medicine when they catch a cold or a cough.",
+    "chinese": "",
+    "startTime": 84,
+    "endTime": 95,
+    "audioFile": "71-80.mp3"
+  },
+  {
+    "id": 80,
+    "english": "It will be cold and windy in Xi'an, and it will be sunny and warm in Sanya.",
+    "chinese": "",
+    "startTime": 95,
+    "endTime": 105,
+    "audioFile": "71-80.mp3"
+  }
+]

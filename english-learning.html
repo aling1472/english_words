@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语跟读练习</title>
+    <script src="https://cdn.tailwindcss.com/3.3.3"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .word-highlight {
+            transition: all 0.2s ease;
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .word-highlight:hover {
+            color: #3b82f6;
+            background-color: #dbeafe;
+        }
+        .active-word {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .audio-progress {
+            -webkit-appearance: none;
+            height: 6px;
+            border-radius: 3px;
+            background: #e2e8f0;
+            width: 100%;
+        }
+        .audio-progress::-webkit-progress-bar {
+            background-color: #e2e8f0;
+            border-radius: 3px;
+        }
+        .audio-progress::-webkit-progress-value {
+            background-color: #3b82f6;
+            border-radius: 3px;
+        }
+        .sentence-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .sentence-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .play-btn:hover {
+            background-color: #2563eb;
+            transform: scale(1.05);
+        }
+        .play-btn.playing {
+            background-color: #ef4444;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container mx-auto py-8 px-4 md:px-8">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-2">英语跟读练习</h1>
+            <p class="text-slate-600 mb-6">点击播放按钮跟读句子，点击单词听取发音</p>
+                
+            <!-- 文件选择按钮 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-semibold text-slate-700 mb-3">选择句子范围:</h2>
+                <div id="file-buttons" class="flex flex-wrap justify-center gap-2">
+                    <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/01-10.json">1-10</button>
+                    <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/11-20.json">11-20</button>
+                    <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/21-30.json">21-30</button>
+                    <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/31-40.json">31-40</button>
+                    <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/41-50.json">41-50</button>
+                    <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/51-60.json">51-60</button>
+                    <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/61-70.json">61-70</button>
+                    <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/71-80.json">71-80</button>
+                    <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/81-90.json">81-90</button>
+                    <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/91-100.json">91-100</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- 分页控件 -->
+            <div class="flex justify-between items-center mb-6">
+                <button id="prev-page" class="px-4 py-2 bg-slate-200 rounded-lg disabled:opacity-50" disabled>上一页</button>
+                <div id="page-info" class="text-slate-600">第 <span id="current-page">1</span> 页，共 <span id="total-pages">1</span> 页</div>
+                <button id="next-page" class="px-4 py-2 bg-slate-200 rounded-lg disabled:opacity-50" disabled>下一页</button>
+            </div>
+                
+            <div id="sentences-container" class="space-y-6">
+                <!-- 句子卡片将通过JavaScript动态生成 -->
+            </div>
+                
+            <!-- 分页控件 -->
+            <div class="flex justify-between items-center mt-6">
+                <button id="prev-page-bottom" class="px-4 py-2 bg-slate-200 rounded-lg disabled:opacity-50" disabled>上一页</button>
+                <div id="page-info-bottom" class="text-slate-600">第 <span id="current-page-bottom">1</span> 页，共 <span id="total-pages-bottom">1</span> 页</div>
+                <button id="next-page-bottom" class="px-4 py-2 bg-slate-200 rounded-lg disabled:opacity-50" disabled>下一页</button>
+            </div>
+        </main>
+
+        <footer class="mt-16 text-center text-sm text-slate-500">
+            <p>英语学习助手 - 提升您的英语听说能力</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 全局变量
+            let currentPage = 1;
+            const itemsPerPage = 5; // 每页显示的句子数量
+            let allSentences = [];
+            let currentAudioFile = '';
+
+            // 解析时间戳为秒数
+            function parseTimeToSeconds(timeStr) {
+                const parts = timeStr.split(':');
+                const hours = parseInt(parts[0], 10);
+                const minutes = parseInt(parts[1], 10);
+                const seconds = parseInt(parts[2], 10);
+                return hours * 3600 + minutes * 60 + seconds;
+            }
+
+            // 加载JSON文件
+            async function loadSentencesFromFile(filename) {
+                try {
+                    const response = await fetch(filename);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const sentences = await response.json();
+                    
+                    // 设置音频文件名
+                    if (sentences.length > 0) {
+                        currentAudioFile = sentences[0].audioFile || filename.replace('.json', '.mp3');
+                    }
+                    
+                    return sentences;
+                } catch (error) {
+                    console.error('加载文件时出错:', error);
+                    alert('加载文件时出错: ' + error.message);
+                    return [];
+                }
+            }
+
+            // 初始化页面
+            async function init() {
+                // 加载默认文件
+                allSentences = await loadSentencesFromFile('assets/01-10.json');
+                updatePagination();
+                displaySentences();
+                
+                // 绑定事件监听器
+                document.getElementById('prev-page').addEventListener('click', () => changePage(currentPage - 1));
+                document.getElementById('next-page').addEventListener('click', () => changePage(currentPage + 1));
+                document.getElementById('prev-page-bottom').addEventListener('click', () => changePage(currentPage - 1));
+                document.getElementById('next-page-bottom').addEventListener('click', () => changePage(currentPage + 1));
+                
+                // 为文件按钮绑定事件监听器
+                document.querySelectorAll('.file-btn').forEach(button => {
+                    button.addEventListener('click', loadFileFromButton);
+                });
+            }
+
+            // 全局音频对象
+            let globalAudio = null;
+            let currentPlayingCard = null;
+
+            // 创建句子卡片
+            function createSentenceCard(sentence) {
+                const card = document.createElement('div');
+                card.className = 'sentence-card bg-white rounded-lg p-6';
+                card.dataset.sentenceId = sentence.id;
+
+                // 英文句子容器
+                const englishContainer = document.createElement('div');
+                englishContainer.className = 'text-lg md:text-xl font-medium text-slate-800 mb-3';
+                englishContainer.id = `sentence-${sentence.id}`;
+
+                // 分割句子为单词并创建可点击的单词元素
+                const words = sentence.english.split(/(\s+)/);
+                words.forEach((word, index) => {
+                    if (word.trim() === '') {
+                        englishContainer.appendChild(document.createTextNode(word));
+                        return;
+                    }
+
+                    const wordSpan = document.createElement('span');
+                    wordSpan.className = 'word-highlight';
+                    wordSpan.textContent = word;
+                    
+                    // 为单词添加点击事件，播放单词发音
+                    wordSpan.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const cleanWord = word.replace(/[.,?!;:"]/g, '').toLowerCase();
+                        playWordAudio(cleanWord);
+                    });
+
+                    englishContainer.appendChild(wordSpan);
+                });
+
+                // 中文翻译
+                const chineseDiv = document.createElement('div');
+                chineseDiv.className = 'text-slate-600 mb-4';
+                chineseDiv.textContent = sentence.chinese;
+
+                // 音频控制区域
+                const audioControl = document.createElement('div');
+                audioControl.className = 'flex items-center space-x-4';
+
+                // 播放按钮
+                const playButton = document.createElement('div');
+                playButton.className = 'play-btn';
+                playButton.innerHTML = '<i class="fas fa-play"></i>';
+
+                // 进度条容器
+                const progressContainer = document.createElement('div');
+                progressContainer.className = 'flex-1';
+
+                // 进度条
+                const progressBar = document.createElement('progress');
+                progressBar.className = 'audio-progress';
+                progressBar.value = 0;
+                progressBar.max = 100;
+
+                progressContainer.appendChild(progressBar);
+
+                // 播放时间显示
+                const timeDisplay = document.createElement('div');
+                timeDisplay.className = 'text-sm text-slate-500 w-20 text-right';
+                timeDisplay.textContent = '00:00';
+
+                // 将元素添加到音频控制区域
+                audioControl.appendChild(playButton);
+                audioControl.appendChild(progressContainer);
+                audioControl.appendChild(timeDisplay);
+
+                // 为播放按钮添加点击事件
+                playButton.addEventListener('click', () => {
+                    playSentenceAudio(sentence, playButton, progressBar, timeDisplay, card);
+                });
+
+                // 组装卡片
+                card.appendChild(englishContainer);
+                card.appendChild(chineseDiv);
+                card.appendChild(audioControl);
+
+                return card;
+            }
+
+            // 播放单词音频（使用有道词典API）
+            function playWordAudio(word) {
+                if (!word) return;
+                
+                const audioUrl = `http://dict.youdao.com/dictvoice?type=1&audio=${encodeURIComponent(word)}`;
+                const audio = new Audio(audioUrl);
+                audio.play();
+            }
+
+            // 播放句子音频
+            function playSentenceAudio(sentence, playButton, progressBar, timeDisplay, card) {
+                // 如果有其他句子正在播放，停止它们
+                if (globalAudio && currentPlayingCard && currentPlayingCard !== card) {
+                    globalAudio.pause();
+                    const oldPlayButton = currentPlayingCard.querySelector('.play-btn');
+                    if (oldPlayButton) {
+                        oldPlayButton.innerHTML = '<i class="fas fa-play"></i>';
+                        oldPlayButton.classList.remove('playing');
+                    }
+                }
+
+                // 如果当前句子正在播放，切换播放/暂停状态
+                if (globalAudio && currentPlayingCard === card) {
+                    if (!globalAudio.paused) {
+                        globalAudio.pause();
+                        playButton.innerHTML = '<i class="fas fa-play"></i>';
+                        playButton.classList.remove('playing');
+                        return;
+                    } else {
+                        globalAudio.play();
+                        playButton.innerHTML = '<i class="fas fa-pause"></i>';
+                        playButton.classList.add('playing');
+                        return;
+                    }
+                }
+
+                // 创建新的音频对象
+                globalAudio = new Audio(sentence.audioFile);
+                currentPlayingCard = card;
+
+                // 设置音频的播放区间
+                globalAudio.currentTime = sentence.startTime;
+                
+                // 播放音频
+                globalAudio.play();
+                playButton.innerHTML = '<i class="fas fa-pause"></i>';
+                playButton.classList.add('playing');
+
+                // 获取句子元素中的单词
+                const sentenceElement = document.getElementById(`sentence-${sentence.id}`);
+                const wordElements = sentenceElement.querySelectorAll('.word-highlight');
+                
+                // 重置所有高亮
+                wordElements.forEach(el => {
+                    el.classList.remove('active-word');
+                });
+
+                // 更新进度条和时间显示
+                const updateProgress = setInterval(() => {
+                    if (!globalAudio) return;
+                    
+                    // 检查是否超出播放时间范围
+                    if (globalAudio.currentTime >= sentence.endTime) {
+                        globalAudio.pause();
+                        clearInterval(updateProgress);
+                        playButton.innerHTML = '<i class="fas fa-play"></i>';
+                        playButton.classList.remove('playing');
+                        progressBar.value = 100;
+                        timeDisplay.textContent = formatTime(sentence.endTime - sentence.startTime) + ' / ' + formatTime(sentence.endTime - sentence.startTime);
+                        
+                        // 移除所有高亮
+                        wordElements.forEach(el => {
+                            el.classList.remove('active-word');
+                        });
+                        return;
+                    }
+                    
+                    // 更新进度条
+                    const progress = ((globalAudio.currentTime - sentence.startTime) / (sentence.endTime - sentence.startTime)) * 100;
+                    progressBar.value = progress;
+                    
+                    // 更新时间显示
+                    const currentTime = globalAudio.currentTime - sentence.startTime;
+                    const totalDuration = sentence.endTime - sentence.startTime;
+                    timeDisplay.textContent = formatTime(currentTime) + ' / ' + formatTime(totalDuration);
+                }, 100);
+
+                // 音频播放结束时的处理
+                globalAudio.addEventListener('ended', () => {
+                    clearInterval(updateProgress);
+                    playButton.innerHTML = '<i class="fas fa-play"></i>';
+                    playButton.classList.remove('playing');
+                    progressBar.value = 0;
+                    timeDisplay.textContent = '00:00';
+                    
+                    // 移除所有高亮
+                    wordElements.forEach(el => {
+                        el.classList.remove('active-word');
+                    });
+                });
+
+                // 音频播放错误处理
+                globalAudio.addEventListener('error', () => {
+                    clearInterval(updateProgress);
+                    playButton.innerHTML = '<i class="fas fa-play"></i>';
+                    playButton.classList.remove('playing');
+                    progressBar.value = 0;
+                    timeDisplay.textContent = '00:00';
+                    alert('音频播放出错，请检查文件路径是否正确');
+                });
+            }
+
+            // 通过按钮加载文件
+            async function loadFileFromButton(event) {
+                const filename = event.target.dataset.file;
+                
+                // 更新按钮样式以显示当前选中
+                document.querySelectorAll('.file-btn').forEach(btn => {
+                    btn.classList.remove('bg-blue-700');
+                    btn.classList.add('bg-blue-500');
+                });
+                event.target.classList.remove('bg-blue-500');
+                event.target.classList.add('bg-blue-700');
+                
+                allSentences = await loadSentencesFromFile(filename);
+                currentPage = 1;
+                updatePagination();
+                displaySentences();
+            }
+
+            // 更新分页信息
+            function updatePagination() {
+                const totalPages = Math.ceil(allSentences.length / itemsPerPage);
+                
+                // 更新顶部分页控件
+                document.getElementById('current-page').textContent = currentPage;
+                document.getElementById('total-pages').textContent = totalPages;
+                document.getElementById('prev-page').disabled = currentPage === 1;
+                document.getElementById('next-page').disabled = currentPage === totalPages;
+                
+                // 更新底部分页控件
+                document.getElementById('current-page-bottom').textContent = currentPage;
+                document.getElementById('total-pages-bottom').textContent = totalPages;
+                document.getElementById('prev-page-bottom').disabled = currentPage === 1;
+                document.getElementById('next-page-bottom').disabled = currentPage === totalPages;
+            }
+
+            // 切换页面
+            function changePage(page) {
+                const totalPages = Math.ceil(allSentences.length / itemsPerPage);
+                
+                if (page >= 1 && page <= totalPages) {
+                    currentPage = page;
+                    updatePagination();
+                    displaySentences();
+                    
+                    // 滚动到页面顶部
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+
+            // 显示当前页的句子
+            function displaySentences() {
+                const container = document.getElementById('sentences-container');
+                container.innerHTML = '';
+                
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = Math.min(startIndex + itemsPerPage, allSentences.length);
+                
+                // 为当前页的每个句子创建卡片
+                for (let i = startIndex; i < endIndex; i++) {
+                    // 更新音频文件名
+                    allSentences[i].audioFile = currentAudioFile;
+                    const card = createSentenceCard(allSentences[i]);
+                    container.appendChild(card);
+                }
+            }
+
+            // 格式化时间显示
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+
+            // 启动应用
+            init();
+        });
+    </script>
+</body>
+</html>
