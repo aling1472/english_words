@@ -75,7 +75,12 @@
         <header class="text-center mb-8">
             <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-2">英语跟读练习</h1>
             <p class="text-slate-600 mb-6">点击播放按钮跟读句子，点击单词听取发音</p>
-                
+        
+            <!-- 背诵按钮 -->
+            <div class="mb-4">
+                <button id="recite-btn" class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600">背诵</button>
+            </div>
+        
             <!-- 文件选择按钮 -->
             <div class="mb-6">
                 <h2 class="text-lg font-semibold text-slate-700 mb-3">选择句子范围:</h2>
@@ -126,6 +131,7 @@
             const itemsPerPage = 5; // 每页显示的句子数量
             let allSentences = [];
             let currentAudioFile = '';
+            let isReciting = false; // 背诵模式状态
 
             // 解析时间戳为秒数
             function parseTimeToSeconds(timeStr) {
@@ -174,6 +180,45 @@
                 // 为文件按钮绑定事件监听器
                 document.querySelectorAll('.file-btn').forEach(button => {
                     button.addEventListener('click', loadFileFromButton);
+                });
+                
+                // 为背诵按钮绑定事件监听器
+                document.getElementById('recite-btn').addEventListener('click', toggleReciteMode);
+            }
+
+            // 切换背诵模式
+            function toggleReciteMode() {
+                isReciting = !isReciting;
+                const reciteBtn = document.getElementById('recite-btn');
+                
+                if (isReciting) {
+                    reciteBtn.textContent = '取消背诵';
+                    reciteBtn.classList.remove('bg-purple-500', 'hover:bg-purple-600');
+                    reciteBtn.classList.add('bg-red-500', 'hover:bg-red-600');
+                    // 隐藏所有英文内容
+                    hideEnglishContent();
+                } else {
+                    reciteBtn.textContent = '背诵';
+                    reciteBtn.classList.remove('bg-red-500', 'hover:bg-red-600');
+                    reciteBtn.classList.add('bg-purple-500', 'hover:bg-purple-600');
+                    // 显示所有英文内容
+                    showEnglishContent();
+                }
+            }
+
+            // 隐藏英文内容
+            function hideEnglishContent() {
+                const englishElements = document.querySelectorAll('.sentence-card .text-lg, .sentence-card .text-xl');
+                englishElements.forEach(element => {
+                    element.style.color = '#f8fafc'; // 设置为背景色
+                });
+            }
+
+            // 显示英文内容
+            function showEnglishContent() {
+                const englishElements = document.querySelectorAll('.sentence-card .text-lg, .sentence-card .text-xl');
+                englishElements.forEach(element => {
+                    element.style.color = ''; // 恢复默认颜色
                 });
             }
 
@@ -439,6 +484,29 @@
                     const card = createSentenceCard(allSentences[i]);
                     container.appendChild(card);
                 }
+                
+                // 如果处于背诵模式，继续保持隐藏英文内容
+                if (isReciting) {
+                    hideEnglishContent();
+                }
+            }
+
+            // 通过按钮加载文件
+            async function loadFileFromButton(event) {
+                const filename = event.target.dataset.file;
+                
+                // 更新按钮样式以显示当前选中
+                document.querySelectorAll('.file-btn').forEach(btn => {
+                    btn.classList.remove('bg-blue-700');
+                    btn.classList.add('bg-blue-500');
+                });
+                event.target.classList.remove('bg-blue-500');
+                event.target.classList.add('bg-blue-700');
+                
+                allSentences = await loadSentencesFromFile(filename);
+                currentPage = 1;
+                updatePagination();
+                displaySentences();
             }
 
             // 格式化时间显示
