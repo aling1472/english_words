@@ -76,9 +76,21 @@
             <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-2">英语跟读练习</h1>
             <p class="text-slate-600 mb-6">点击播放按钮跟读句子，点击单词听取发音</p>
         
-            <!-- 背诵按钮 -->
-            <div class="mb-4">
+            <!-- 背诵按钮和语速设置 -->
+            <div class="mb-4 flex flex-wrap items-center justify-center gap-4">
                 <button id="recite-btn" class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600">背诵</button>
+                
+                <!-- 语速设置 -->
+                <div class="flex items-center space-x-2">
+                    <label for="playback-rate" class="text-slate-700 font-medium">语速:</label>
+                    <select id="playback-rate" class="px-2 py-1 border border-slate-300 rounded-md">
+                        <option value="2">2.0x</option>
+                        <option value="1.5">1.5x</option>
+                        <option value="1" selected>1.0x</option>
+                        <option value="0.75">0.75x</option>
+                        <option value="0.5">0.5x</option>
+                    </select>
+                </div>
             </div>
         
             <!-- 文件选择按钮 -->
@@ -133,6 +145,7 @@
             let allSentences = [];
             let currentAudioFile = '';
             let isReciting = false; // 背诵模式状态
+            let playbackRate = 1.0; // 默认播放速度
 
             // 解析时间戳为秒数
             function parseTimeToSeconds(timeStr) {
@@ -186,6 +199,15 @@
                 
                 // 为背诵按钮绑定事件监听器
                 document.getElementById('recite-btn').addEventListener('click', toggleReciteMode);
+                
+                // 为语速选择框绑定事件监听器
+                document.getElementById('playback-rate').addEventListener('change', function() {
+                    playbackRate = parseFloat(this.value);
+                    // 如果有音频正在播放，更新其播放速度
+                    if (globalAudio) {
+                        globalAudio.playbackRate = playbackRate;
+                    }
+                });
             }
 
             // 切换背诵模式
@@ -384,6 +406,9 @@
                 globalAudio = new Audio(audioFile);
                 currentPlayingCard = card;
 
+                // 设置播放速度
+                globalAudio.playbackRate = playbackRate;
+
                 // 播放音频
                 globalAudio.play();
                 playButton.innerHTML = '<i class="fas fa-pause"></i>';
@@ -434,6 +459,9 @@
                 const audioFile = sentence.mp3 || sentence.audioFile;
                 globalAudio = new Audio(audioFile);
                 currentPlayingCard = card;
+
+                // 设置播放速度
+                globalAudio.playbackRate = playbackRate;
 
                 // 设置音频的播放区间
                 globalAudio.currentTime = sentence.startTime || 0;
