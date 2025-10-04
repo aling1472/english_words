@@ -2,7 +2,7 @@
   {
     "id": 71,
     "english": "It takes us half an hour to walk to school every day.",
-    "chinese": "",
+    "chinese": "我们每天步行上学需要半小时。",
     "startTime": 0,
     "endTime": 11,
     "audioFile": "71-80.mp3"
@@ -10,7 +10,7 @@
   {
     "id": 72,
     "english": "The train from Tianjin Nan arrived an hour ago.",
-    "chinese": "",
+    "chinese": "从天津南站来的火车一小时前到了。",
     "startTime": 11,
     "endTime": 19,
     "audioFile": "71-80.mp3"
@@ -18,7 +18,7 @@
   {
     "id": 73,
     "english": "You can go down the street and then turn right at the first corner.",
-    "chinese": "",
+    "chinese": "你可以沿着街道走，然后在第一个拐角处右转。",
     "startTime": 19,
     "endTime": 30,
     "audioFile": "71-80.mp3"
@@ -26,7 +26,7 @@
   {
     "id": 74,
     "english": "We mustn't talk or speak loudly in public places like hospitals, libraries or cinemas.",
-    "chinese": "",
+    "chinese": "我们不能在医院、图书馆或电影院等公共场所大声说话。",
     "startTime": 30,
     "endTime": 42,
     "audioFile": "71-80.mp3"
@@ -34,7 +34,7 @@
   {
     "id": 75,
     "english": "Hainan is in the south of China",
-    "chinese": "",
+    "chinese": "海南在中国的南部。",
     "startTime": 42,
     "endTime": 47,
     "audioFile": "71-80.mp3"
@@ -42,7 +42,7 @@
   {
     "id": 76,
     "english": "The bookstore is next to the library",
-    "chinese": "",
+    "chinese": "书店在图书馆旁边。",
     "startTime": 47,
     "endTime": 55,
     "audioFile": "71-80.mp3"
@@ -50,7 +50,7 @@
   {
     "id": 77,
     "english": "My grandma lives with my uncle in a village not too far away",
-    "chinese": "",
+    "chinese": "我奶奶和我叔叔住在一个不太远的村庄里。",
     "startTime": 55,
     "endTime": 74,
     "audioFile": "71-80.mp3"
@@ -58,7 +58,7 @@
   {
     "id": 78,
     "english": "Sitting for a long time at the computer is bad for our health.",
-    "chinese": "",
+    "chinese": "长时间坐在电脑前对我们的健康有害。",
     "startTime": 74,
     "endTime": 84,
     "audioFile": "71-80.mp3"
@@ -66,7 +66,7 @@
   {
     "id": 79,
     "english": "People often need to take some medicine when they catch a cold or a cough.",
-    "chinese": "",
+    "chinese": "人们感冒或咳嗽时通常需要吃一些药。",
     "startTime": 84,
     "endTime": 95,
     "audioFile": "71-80.mp3"
@@ -74,7 +74,7 @@
   {
     "id": 80,
     "english": "It will be cold and windy in Xi'an, and it will be sunny and warm in Sanya.",
-    "chinese": "",
+    "chinese": "西安将会寒冷多风，三亚将会晴朗温暖。",
     "startTime": 95,
     "endTime": 105,
     "audioFile": "71-80.mp3"
