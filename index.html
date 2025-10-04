@@ -95,6 +95,7 @@
                     <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/71-80.json">71-80</button>
                     <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/81-90.json">81-90</button>
                     <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/91-100.json">91-100</button>
+                    <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/grade4/unit2.json">Grade4 Unit2</button>
                 </div>
             </div>
         </header>
@@ -153,7 +154,8 @@
                     
                     // 设置音频文件名
                     if (sentences.length > 0) {
-                        currentAudioFile = sentences[0].audioFile || filename.replace('.json', '.mp3');
+                        // 处理不同字段名的情况
+                        currentAudioFile = sentences[0].audioFile || sentences[0].mp3 || filename.replace('.json', '.mp3');
                     }
                     
                     return sentences;
@@ -237,32 +239,54 @@
                 englishContainer.className = 'text-lg md:text-xl font-medium text-slate-800 mb-3';
                 englishContainer.id = `sentence-${sentence.id}`;
 
-                // 分割句子为单词并创建可点击的单词元素
-                const words = sentence.english.split(/(\s+)/);
-                words.forEach((word, index) => {
-                    if (word.trim() === '') {
-                        englishContainer.appendChild(document.createTextNode(word));
-                        return;
+                // 处理英文文本中的换行符
+                const englishText = sentence.english;
+                const englishLines = englishText.split('\n');
+                englishLines.forEach((line, index) => {
+                    if (line.trim() !== '') {
+                        // 分割句子为单词并创建可点击的单词元素
+                        const words = line.split(/(\s+)/);
+                        words.forEach((word, wordIndex) => {
+                            if (word.trim() === '') {
+                                englishContainer.appendChild(document.createTextNode(word));
+                                return;
+                            }
+
+                            const wordSpan = document.createElement('span');
+                            wordSpan.className = 'word-highlight';
+                            wordSpan.textContent = word;
+                            
+                            // 为单词添加点击事件，播放单词发音
+                            wordSpan.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                const cleanWord = word.replace(/[.,?!;:"]/g, '').toLowerCase();
+                                playWordAudio(cleanWord);
+                            });
+
+                            englishContainer.appendChild(wordSpan);
+                        });
                     }
-
-                    const wordSpan = document.createElement('span');
-                    wordSpan.className = 'word-highlight';
-                    wordSpan.textContent = word;
                     
-                    // 为单词添加点击事件，播放单词发音
-                    wordSpan.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const cleanWord = word.replace(/[.,?!;:"]/g, '').toLowerCase();
-                        playWordAudio(cleanWord);
-                    });
-
-                    englishContainer.appendChild(wordSpan);
+                    // 如果不是最后一行，添加换行元素
+                    if (index < englishLines.length - 1) {
+                        englishContainer.appendChild(document.createElement('br'));
+                    }
                 });
 
                 // 中文翻译
                 const chineseDiv = document.createElement('div');
                 chineseDiv.className = 'text-slate-600 mb-4';
-                chineseDiv.textContent = sentence.chinese;
+                
+                // 处理中文文本中的换行符
+                const chineseText = sentence.chinese;
+                const chineseLines = chineseText.split('\n');
+                chineseLines.forEach((line, index) => {
+                    chineseDiv.appendChild(document.createTextNode(line));
+                    // 如果不是最后一行，添加换行元素
+                    if (index < chineseLines.length - 1) {
+                        chineseDiv.appendChild(document.createElement('br'));
+                    }
+                });
 
                 // 音频控制区域
                 const audioControl = document.createElement('div');
@@ -273,32 +297,43 @@
                 playButton.className = 'play-btn';
                 playButton.innerHTML = '<i class="fas fa-play"></i>';
 
-                // 进度条容器
-                const progressContainer = document.createElement('div');
-                progressContainer.className = 'flex-1';
+                // 如果没有时间戳信息，则不显示进度条
+                if (sentence.startTime !== undefined && sentence.endTime !== undefined) {
+                    // 进度条容器
+                    const progressContainer = document.createElement('div');
+                    progressContainer.className = 'flex-1';
 
-                // 进度条
-                const progressBar = document.createElement('progress');
-                progressBar.className = 'audio-progress';
-                progressBar.value = 0;
-                progressBar.max = 100;
+                    // 进度条
+                    const progressBar = document.createElement('progress');
+                    progressBar.className = 'audio-progress';
+                    progressBar.value = 0;
+                    progressBar.max = 100;
 
-                progressContainer.appendChild(progressBar);
+                    progressContainer.appendChild(progressBar);
 
-                // 播放时间显示
-                const timeDisplay = document.createElement('div');
-                timeDisplay.className = 'text-sm text-slate-500 w-20 text-right';
-                timeDisplay.textContent = '00:00';
+                    // 播放时间显示
+                    const timeDisplay = document.createElement('div');
+                    timeDisplay.className = 'text-sm text-slate-500 w-20 text-right';
+                    timeDisplay.textContent = '00:00';
 
-                // 将元素添加到音频控制区域
-                audioControl.appendChild(playButton);
-                audioControl.appendChild(progressContainer);
-                audioControl.appendChild(timeDisplay);
+                    // 将元素添加到音频控制区域
+                    audioControl.appendChild(playButton);
+                    audioControl.appendChild(progressContainer);
+                    audioControl.appendChild(timeDisplay);
 
-                // 为播放按钮添加点击事件
-                playButton.addEventListener('click', () => {
-                    playSentenceAudio(sentence, playButton, progressBar, timeDisplay, card);
-                });
+                    // 为播放按钮添加点击事件
+                    playButton.addEventListener('click', () => {
+                        playSentenceAudio(sentence, playButton, progressBar, timeDisplay, card);
+                    });
+                } else {
+                    // 如果没有时间戳信息，只显示播放按钮
+                    audioControl.appendChild(playButton);
+                    
+                    // 为播放按钮添加点击事件
+                    playButton.addEventListener('click', () => {
+                        playSentenceAudioSimple(sentence, playButton, card);
+                    });
+                }
 
                 // 组装卡片
                 card.appendChild(englishContainer);
@@ -315,6 +350,57 @@
                 const audioUrl = `http://dict.youdao.com/dictvoice?type=1&audio=${encodeURIComponent(word)}`;
                 const audio = new Audio(audioUrl);
                 audio.play();
+            }
+
+            // 简单播放句子音频（无时间戳信息）
+            function playSentenceAudioSimple(sentence, playButton, card) {
+                // 如果有其他句子正在播放，停止它们
+                if (globalAudio && currentPlayingCard && currentPlayingCard !== card) {
+                    globalAudio.pause();
+                    const oldPlayButton = currentPlayingCard.querySelector('.play-btn');
+                    if (oldPlayButton) {
+                        oldPlayButton.innerHTML = '<i class="fas fa-play"></i>';
+                        oldPlayButton.classList.remove('playing');
+                    }
+                }
+
+                // 如果当前句子正在播放，切换播放/暂停状态
+                if (globalAudio && currentPlayingCard === card) {
+                    if (!globalAudio.paused) {
+                        globalAudio.pause();
+                        playButton.innerHTML = '<i class="fas fa-play"></i>';
+                        playButton.classList.remove('playing');
+                        return;
+                    } else {
+                        globalAudio.play();
+                        playButton.innerHTML = '<i class="fas fa-pause"></i>';
+                        playButton.classList.add('playing');
+                        return;
+                    }
+                }
+
+                // 创建新的音频对象，处理不同字段名的情况
+                const audioFile = sentence.mp3 || sentence.audioFile;
+                globalAudio = new Audio(audioFile);
+                currentPlayingCard = card;
+
+                // 播放音频
+                globalAudio.play();
+                playButton.innerHTML = '<i class="fas fa-pause"></i>';
+                playButton.classList.add('playing');
+
+                // 音频播放结束时的处理
+                globalAudio.addEventListener('ended', () => {
+                    playButton.innerHTML = '<i class="fas fa-play"></i>';
+                    playButton.classList.remove('playing');
+                });
+
+                // 音频播放错误处理
+                globalAudio.addEventListener('error', () => {
+                    playButton.innerHTML = '<i class="fas fa-play"></i>';
+                    playButton.classList.remove('playing');
+                    alert('音频播放出错，请检查文件路径是否正确');
+                });
             }
 
             // 播放句子音频
@@ -344,12 +430,13 @@
                     }
                 }
 
-                // 创建新的音频对象
-                globalAudio = new Audio(sentence.audioFile);
+                // 创建新的音频对象，处理不同字段名的情况
+                const audioFile = sentence.mp3 || sentence.audioFile;
+                globalAudio = new Audio(audioFile);
                 currentPlayingCard = card;
 
                 // 设置音频的播放区间
-                globalAudio.currentTime = sentence.startTime;
+                globalAudio.currentTime = sentence.startTime || 0;
                 
                 // 播放音频
                 globalAudio.play();
@@ -370,13 +457,14 @@
                     if (!globalAudio) return;
                     
                     // 检查是否超出播放时间范围
-                    if (globalAudio.currentTime >= sentence.endTime) {
+                    const endTime = sentence.endTime || globalAudio.duration;
+                    if (globalAudio.currentTime >= endTime) {
                         globalAudio.pause();
                         clearInterval(updateProgress);
                         playButton.innerHTML = '<i class="fas fa-play"></i>';
                         playButton.classList.remove('playing');
                         progressBar.value = 100;
-                        timeDisplay.textContent = formatTime(sentence.endTime - sentence.startTime) + ' / ' + formatTime(sentence.endTime - sentence.startTime);
+                        timeDisplay.textContent = formatTime(endTime) + ' / ' + formatTime(endTime);
                         
                         // 移除所有高亮
                         wordElements.forEach(el => {
@@ -386,12 +474,13 @@
                     }
                     
                     // 更新进度条
-                    const progress = ((globalAudio.currentTime - sentence.startTime) / (sentence.endTime - sentence.startTime)) * 100;
+                    const startTime = sentence.startTime || 0;
+                    const progress = ((globalAudio.currentTime - startTime) / (endTime - startTime)) * 100;
                     progressBar.value = progress;
                     
                     // 更新时间显示
-                    const currentTime = globalAudio.currentTime - sentence.startTime;
-                    const totalDuration = sentence.endTime - sentence.startTime;
+                    const currentTime = globalAudio.currentTime - startTime;
+                    const totalDuration = endTime - startTime;
                     timeDisplay.textContent = formatTime(currentTime) + ' / ' + formatTime(totalDuration);
                 }, 100);
 
@@ -479,8 +568,8 @@
                 
                 // 为当前页的每个句子创建卡片
                 for (let i = startIndex; i < endIndex; i++) {
-                    // 更新音频文件名
-                    allSentences[i].audioFile = currentAudioFile;
+                    // 更新音频文件名，处理不同字段名的情况
+                    allSentences[i].audioFile = allSentences[i].mp3 || currentAudioFile;
                     const card = createSentenceCard(allSentences[i]);
                     container.appendChild(card);
                 }
