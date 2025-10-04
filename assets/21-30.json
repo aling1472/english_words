@@ -5,7 +5,7 @@
     "chinese": "桌子上有一些书、一支钢笔和一支铅笔。",
     "startTime": 0,
     "endTime": 11,
-    "audioFile": "21-30.mp3"
+    "audioFile": "assets/21-30.mp3"
   },
   {
     "id": 22,
@@ -13,7 +13,7 @@
     "chinese": "他们上午有四节课，下午有两节课。",
     "startTime": 11,
     "endTime": 20,
-    "audioFile": "21-30.mp3"
+    "audioFile": "assets/21-30.mp3"
   },
   {
     "id": 23,
@@ -21,7 +21,7 @@
     "chinese": "我们的班主任问班长比尔为什么没来学校。",
     "startTime": 20,
     "endTime": 30,
-    "audioFile": "21-30.mp3"
+    "audioFile": "assets/21-30.mp3"
   },
   {
     "id": 24,
@@ -29,7 +29,7 @@
     "chinese": "格林小姐四年前教我们英语。",
     "startTime": 30,
     "endTime": 38,
-    "audioFile": "21-30.mp3"
+    "audioFile": "assets/21-30.mp3"
   },
   {
     "id": 25,
@@ -37,7 +37,7 @@
     "chinese": "汤姆离开教室时从不忘记关灯。",
     "startTime": 38,
     "endTime": 48,
-    "audioFile": "21-30.mp3"
+    "audioFile": "assets/21-30.mp3"
   },
   {
     "id": 26,
@@ -45,7 +45,7 @@
     "chinese": "我完成了作业然后休息了一下。",
     "startTime": 48,
     "endTime": 57,
-    "audioFile": "21-30.mp3"
+    "audioFile": "assets/21-30.mp3"
   },
   {
     "id": 27,
@@ -53,7 +53,7 @@
     "chinese": "祝你考试成功。",
     "startTime": 57,
     "endTime": 66,
-    "audioFile": "21-30.mp3"
+    "audioFile": "assets/21-30.mp3"
   },
   {
     "id": 28,
@@ -61,7 +61,7 @@
     "chinese": "简确信她把钱包忘在教室里了。",
     "startTime": 66,
     "endTime": 75,
-    "audioFile": "21-30.mp3"
+    "audioFile": "assets/21-30.mp3"
   },
   {
     "id": 29,
@@ -69,7 +69,7 @@
     "chinese": "据说我们学校的报纸每周出版一次。",
     "startTime": 75,
     "endTime": 83,
-    "audioFile": "21-30.mp3"
+    "audioFile": "assets/21-30.mp3"
   },
   {
     "id": 30,
@@ -77,6 +77,6 @@
     "chinese": "我认为我们的学校生活充满欢声笑语。",
     "startTime": 83,
     "endTime": 93,
-    "audioFile": "21-30.mp3"
+    "audioFile": "assets/21-30.mp3"
   }
 ]

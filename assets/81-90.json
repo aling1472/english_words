@@ -5,7 +5,7 @@
     "chinese": "天气很热，所以冰变成了水。",
     "startTime": 0,
     "endTime": 12,
-    "audioFile": "81-90.mp3"
+    "audioFile": "assets/81-90.mp3"
   },
   {
     "id": 82,
@@ -13,7 +13,7 @@
     "chinese": "天气预报说下午晚些时候会有雨。",
     "startTime": 12,
     "endTime": 21,
-    "audioFile": "81-90.mp3"
+    "audioFile": "assets/81-90.mp3"
   },
   {
     "id": 83,
@@ -21,7 +21,7 @@
     "chinese": "人们在春天植树，农民在秋天忙着收割。",
     "startTime": 21,
     "endTime": 31,
-    "audioFile": "81-90.mp3"
+    "audioFile": "assets/81-90.mp3"
   },
   {
     "id": 84,
@@ -29,7 +29,7 @@
     "chinese": "春天来临时，冬眠的动物开始醒来。",
     "startTime": 31,
     "endTime": 41,
-    "audioFile": "81-90.mp3"
+    "audioFile": "assets/81-90.mp3"
   },
   {
     "id": 85,
@@ -37,7 +37,7 @@
     "chinese": "这是一头多么大的大象啊。",
     "startTime": 41,
     "endTime": 48,
-    "audioFile": "81-90.mp3"
+    "audioFile": "assets/81-90.mp3"
   },
   {
     "id": 86,
@@ -45,7 +45,7 @@
     "chinese": "你可以在一个树枝上看到多达15,000只蝴蝶。",
     "startTime": 48,
     "endTime": 59,
-    "audioFile": "81-90.mp3"
+    "audioFile": "assets/81-90.mp3"
   },
   {
     "id": 87,
@@ -53,7 +53,7 @@
     "chinese": "乔伊在家养了两只宠物，她每天晚饭后都会喂它们。",
     "startTime": 59,
     "endTime": 70,
-    "audioFile": "81-90.mp3"
+    "audioFile": "assets/81-90.mp3"
   },
   {
     "id": 88,
@@ -61,7 +61,7 @@
     "chinese": "轮到你遛狗了。",
     "startTime": 70,
     "endTime": 76,
-    "audioFile": "81-90.mp3"
+    "audioFile": "assets/81-90.mp3"
   },
   {
     "id": 89,
@@ -69,7 +69,7 @@
     "chinese": "这个女孩想给她妈妈买一朵花。",
     "startTime": 76,
     "endTime": 93,
-    "audioFile": "81-90.mp3"
+    "audioFile": "assets/81-90.mp3"
   },
   {
     "id": 90,
@@ -77,6 +77,6 @@
     "chinese": "现在野生蓝鲸只剩下大约10,000头。",
     "startTime": 93,
     "endTime": 103,
-    "audioFile": "81-90.mp3"
+    "audioFile": "assets/81-90.mp3"
   }
 ]

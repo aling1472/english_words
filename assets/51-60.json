@@ -5,7 +5,7 @@
     "chinese": "我爸爸抱着的那个是我姐姐蒂娜。",
     "startTime": 0,
     "endTime": 10,
-    "audioFile": "51-60.mp3"
+    "audioFile": "assets/51-60.mp3"
   },
   {
     "id": 52,
@@ -13,7 +13,7 @@
     "chinese": "我想像我妈妈一样当医生，帮助更多的人。",
     "startTime": 10,
     "endTime": 20,
-    "audioFile": "51-60.mp3"
+    "audioFile": "assets/51-60.mp3"
   },
   {
     "id": 53,
@@ -21,7 +21,7 @@
     "chinese": "你给我写信真是太好了。",
     "startTime": 20,
     "endTime": 25,
-    "audioFile": "51-60.mp3"
+    "audioFile": "assets/51-60.mp3"
   },
   {
     "id": 53,
@@ -29,7 +29,7 @@
     "chinese": "你给我写信真是太好了。",
     "startTime": 25,
     "endTime": 33,
-    "audioFile": "51-60.mp3"
+    "audioFile": "assets/51-60.mp3"
   },
   {
     "id": 54,
@@ -37,7 +37,7 @@
     "chinese": "新老师个子矮，眼睛大。",
     "startTime": 33,
     "endTime": 43,
-    "audioFile": "51-60.mp3"
+    "audioFile": "assets/51-60.mp3"
   },
   {
     "id": 55,
@@ -45,7 +45,7 @@
     "chinese": "我们都喜欢他，因为他少说多做。",
     "startTime": 43,
     "endTime": 49,
-    "audioFile": "51-60.mp3"
+    "audioFile": "assets/51-60.mp3"
   },
   {
     "id": 56,
@@ -53,7 +53,7 @@
     "chinese": "乔伊的头发比黛西的短一点。",
     "startTime": 49,
     "endTime": 53,
-    "audioFile": "51-60.mp3"
+    "audioFile": "assets/51-60.mp3"
   },
   {
     "id": 57,
@@ -61,7 +61,7 @@
     "chinese": "这个人很穷，但他很诚实。",
     "startTime": 53,
     "endTime": 57,
-    "audioFile": "51-60.mp3"
+    "audioFile": "assets/51-60.mp3"
   },
   {
     "id": 58,
@@ -69,7 +69,7 @@
     "chinese": "许多人不喜欢网上购物，因为他们看不到东西或试穿衣服。",
     "startTime": 57,
     "endTime": 75,
-    "audioFile": "51-60.mp3"
+    "audioFile": "assets/51-60.mp3"
   },
   {
     "id": 59,
@@ -77,7 +77,7 @@
     "chinese": "本有两双运动鞋，但它们都很旧了。",
     "startTime": 75,
     "endTime": 84,
-    "audioFile": "51-60.mp3"
+    "audioFile": "assets/51-60.mp3"
   },
   {
     "id": 60,
@@ -85,6 +85,6 @@
     "chinese": "她穿上了她最喜欢的橙色连衣裙。",
     "startTime": 84,
     "endTime": 94,
-    "audioFile": "51-60.mp3"
+    "audioFile": "assets/51-60.mp3"
   }
 ]

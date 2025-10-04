@@ -5,7 +5,7 @@
     "chinese": "她正在做晚饭时电话响了。",
     "startTime": 2,
     "endTime": 9,
-    "audioFile": "11-20.mp3"
+    "audioFile": "assets/11-20.mp3"
   },
   {
     "id": 12,
@@ -13,7 +13,7 @@
     "chinese": "午饭后，安妮清理了桌子并洗了碗。",
     "startTime": 9,
     "endTime": 17,
-    "audioFile": "11-20.mp3"
+    "audioFile": "assets/11-20.mp3"
   },
   {
     "id": 13,
@@ -21,7 +21,7 @@
     "chinese": "我将在网上学习烹饪。",
     "startTime": 17,
     "endTime": 25,
-    "audioFile": "11-20.mp3"
+    "audioFile": "assets/11-20.mp3"
   },
   {
     "id": 14,
@@ -29,7 +29,7 @@
     "chinese": "中国人非常擅长乒乓球。",
     "startTime": 25,
     "endTime": 31,
-    "audioFile": "11-20.mp3"
+    "audioFile": "assets/11-20.mp3"
   },
   {
     "id": 14,
@@ -37,7 +37,7 @@
     "chinese": "这是我们最喜欢的运动。",
     "startTime": 31,
     "endTime": 36,
-    "audioFile": "11-20.mp3"
+    "audioFile": "assets/11-20.mp3"
   },
   {
     "id": 15,
@@ -45,7 +45,7 @@
     "chinese": "他是世界上最高的篮球运动员之一。",
     "startTime": 36,
     "endTime": 45,
-    "audioFile": "11-20.mp3"
+    "audioFile": "assets/11-20.mp3"
   },
   {
     "id": 16,
@@ -53,7 +53,7 @@
     "chinese": "他要去附近的山谷参加山地自行车比赛。",
     "startTime": 45,
     "endTime": 54,
-    "audioFile": "11-20.mp3"
+    "audioFile": "assets/11-20.mp3"
   },
   {
     "id": 17,
@@ -61,7 +61,7 @@
     "chinese": "我最喜欢的科目是科学，因为我可以在课堂上做实验。",
     "startTime": 54,
     "endTime": 66,
-    "audioFile": "11-20.mp3"
+    "audioFile": "assets/11-20.mp3"
   },
   {
     "id": 18,
@@ -69,7 +69,7 @@
     "chinese": "要实现你的梦想，你应该努力学习。",
     "startTime": 66,
     "endTime": 74,
-    "audioFile": "11-20.mp3"
+    "audioFile": "assets/11-20.mp3"
   },
   {
     "id": 19,
@@ -77,7 +77,7 @@
     "chinese": "我们在课内外互相学习。",
     "startTime": 74,
     "endTime": 83,
-    "audioFile": "11-20.mp3"
+    "audioFile": "assets/11-20.mp3"
   },
   {
     "id": 20,
@@ -85,6 +85,6 @@
     "chinese": "这本词典很便宜，我只花了12美元。",
     "startTime": 83,
     "endTime": 93,
-    "audioFile": "11-20.mp3"
+    "audioFile": "assets/11-20.mp3"
   }
 ]

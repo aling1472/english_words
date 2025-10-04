@@ -5,7 +5,7 @@
     "chinese": "她有一双漂亮的粉色手套。",
     "startTime": 0,
     "endTime": 10,
-    "audioFile": "61-70.mp3"
+    "audioFile": "assets/61-70.mp3"
   },
   {
     "id": 62,
@@ -13,7 +13,7 @@
     "chinese": "在中国中秋节吃月饼是传统习俗。",
     "startTime": 10,
     "endTime": 19,
-    "audioFile": "61-70.mp3"
+    "audioFile": "assets/61-70.mp3"
   },
   {
     "id": 63,
@@ -21,7 +21,7 @@
     "chinese": "我妈妈明天会带我去世界公园了解世界各地的著名景点。",
     "startTime": 19,
     "endTime": 32,
-    "audioFile": "61-70.mp3"
+    "audioFile": "assets/61-70.mp3"
   },
   {
     "id": 64,
@@ -29,7 +29,7 @@
     "chinese": "去年暑假，我和父母去了北京。",
     "startTime": 32,
     "endTime": 41,
-    "audioFile": "61-70.mp3"
+    "audioFile": "assets/61-70.mp3"
   },
   {
     "id": 65,
@@ -37,7 +37,7 @@
     "chinese": "我们上周六去了科学博物馆。",
     "startTime": 41,
     "endTime": 49,
-    "audioFile": "61-70.mp3"
+    "audioFile": "assets/61-70.mp3"
   },
   {
     "id": 66,
@@ -45,7 +45,7 @@
     "chinese": "当我们过马路时，必须遵守交通规则。",
     "startTime": 49,
     "endTime": 58,
-    "audioFile": "61-70.mp3"
+    "audioFile": "assets/61-70.mp3"
   },
   {
     "id": 67,
@@ -53,7 +53,7 @@
     "chinese": "为了安全，你可以在人行道上等待，注意来往的汽车和自行车。",
     "startTime": 58,
     "endTime": 70,
-    "audioFile": "61-70.mp3"
+    "audioFile": "assets/61-70.mp3"
   },
   {
     "id": 68,
@@ -61,7 +61,7 @@
     "chinese": "你不能在路上踢足球，因为那里有很多汽车和自行车。",
     "startTime": 70,
     "endTime": 81,
-    "audioFile": "61-70.mp3"
+    "audioFile": "assets/61-70.mp3"
   },
   {
     "id": 69,
@@ -69,7 +69,7 @@
     "chinese": "我们八点钟在公共汽车站见面吧。",
     "startTime": 81,
     "endTime": 88,
-    "audioFile": "61-70.mp3"
+    "audioFile": "assets/61-70.mp3"
   },
   {
     "id": 70,
@@ -77,6 +77,6 @@
     "chinese": "也许你可以骑自行车或乘公共汽车而不是开车。",
     "startTime": 88,
     "endTime": 98,
-    "audioFile": "61-70.mp3"
+    "audioFile": "assets/61-70.mp3"
   }
 ]
