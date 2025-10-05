@@ -93,10 +93,17 @@
                 </div>
             </div>
         
-            <!-- 文件选择按钮 -->
+            <!-- 学习模式选择 -->
             <div class="mb-6">
-                <h2 class="text-lg font-semibold text-slate-700 mb-3">选择句子范围:</h2>
-                <div id="file-buttons" class="flex flex-wrap justify-center gap-2">
+                <h2 class="text-lg font-semibold text-slate-700 mb-3">选择学习模式:</h2>
+                <div class="flex flex-wrap justify-center gap-4 mb-6">
+                    <button id="mode-vocabulary" class="mode-btn px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 font-medium">背单词</button>
+                    <button id="mode-textbook" class="mode-btn px-6 py-3 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 font-medium">学课文</button>
+                </div>
+                
+                <!-- 背单词子选项 -->
+                <div id="vocabulary-options" class="file-options flex flex-wrap justify-center gap-2 mb-6">
+                    <h3 class="text-md font-semibold text-slate-700 w-full text-center mb-2">选择单词范围:</h3>
                     <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/01-10.json">1-10</button>
                     <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/11-20.json">11-20</button>
                     <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/21-30.json">21-30</button>
@@ -107,6 +114,11 @@
                     <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/71-80.json">71-80</button>
                     <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/81-90.json">81-90</button>
                     <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/91-100.json">91-100</button>
+                </div>
+                
+                <!-- 学课文子选项 -->
+                <div id="textbook-options" class="file-options flex flex-wrap justify-center gap-2 mb-6 hidden">
+                    <h3 class="text-md font-semibold text-slate-700 w-full text-center mb-2">选择课文:</h3>
                     <button class="file-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600" data-file="assets/grade4/unit2.json">Grade4 Unit2</button>
                 </div>
             </div>
@@ -208,6 +220,43 @@
                         globalAudio.playbackRate = playbackRate;
                     }
                 });
+                
+                // 为学习模式按钮绑定事件监听器
+                document.getElementById('mode-vocabulary').addEventListener('click', () => switchMode('vocabulary'));
+                document.getElementById('mode-textbook').addEventListener('click', () => switchMode('textbook'));
+                
+                // 默认显示背单词模式
+                switchMode('vocabulary');
+            }
+
+            // 切换学习模式
+            function switchMode(mode) {
+                const vocabBtn = document.getElementById('mode-vocabulary');
+                const textbookBtn = document.getElementById('mode-textbook');
+                const vocabOptions = document.getElementById('vocabulary-options');
+                const textbookOptions = document.getElementById('textbook-options');
+                
+                if (mode === 'vocabulary') {
+                    // 更新按钮样式
+                    vocabBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+                    vocabBtn.classList.add('bg-green-700');
+                    textbookBtn.classList.remove('bg-indigo-700');
+                    textbookBtn.classList.add('bg-indigo-500', 'hover:bg-indigo-600');
+                    
+                    // 显示/隐藏选项
+                    vocabOptions.classList.remove('hidden');
+                    textbookOptions.classList.add('hidden');
+                } else if (mode === 'textbook') {
+                    // 更新按钮样式
+                    textbookBtn.classList.remove('bg-indigo-500', 'hover:bg-indigo-600');
+                    textbookBtn.classList.add('bg-indigo-700');
+                    vocabBtn.classList.remove('bg-green-700');
+                    vocabBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+                    
+                    // 显示/隐藏选项
+                    textbookOptions.classList.remove('hidden');
+                    vocabOptions.classList.add('hidden');
+                }
             }
 
             // 切换背诵模式
